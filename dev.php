@@ -1,4 +1,8 @@
 <?php
+/**
+ * Author: Otlet
+ * 2015 eSportStacja
+ */
 	require_once ("./inc/radio.php");
 	$radio = new radio;
 ?>
@@ -20,7 +24,7 @@
 
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/otlet.css" rel="stylesheet">
-	<link href="./css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -28,29 +32,20 @@
     <![endif]-->
 	
 	<script type="text/javascript">
-			var odtwarzacz = document.getElementById("player");
-			var vol=100;
-			var num=10 ;
-			var proc="";
-			var kanal="Kanał Główny";
+			var player = document.getElementById("player");
+			var vol = 100;
+			var num = 10;
+			var proc = "";
+			var kanal = "Kanał Główny";
 			
-            function player(){
+            function newplayer(){
 				window.open("http://esport-stacja.pl/mini.html", "okienko", "toolbar=no, menubar=no, location=no, personalbar=no, status=no, resizable=no, scrollbars=no, copyhistory=yes, width=400, height=585, top=0, left=0");
             }
 			
-			function play(){
+			function play(adress,kanal){
 				document.getElementById("player").pause();
-				document.getElementById("player").src='http://s1.thekrzos.eu:8700/;stream.mp3';
+				document.getElementById("player").src=adress;
 				document.getElementById("player").play();
-				kanal = "Kanał Główny";
-				document.getElementById("kanal").innerHTML = kanal;
-			}
-			
-			function play_rock(){
-				document.getElementById("player").pause();
-				document.getElementById("player").src='http://4stream.pl:18492/;stream.mp3';
-				document.getElementById("player").play();
-				kanal = "Kanał Rock";
 				document.getElementById("kanal").innerHTML = kanal;
 			}
 			
@@ -61,23 +56,19 @@
 				document.getElementById("kanal").innerHTML = kanal;
 			}
 			
-			function glosniej(){
+			function volup(){
 				document.getElementById("player").volume += 0.1;
 				if(vol+num<=100){
 					vol+=num;
-					proc=vol.toString()+"%";
 					document.getElementById("vol").innerHTML = vol;
-					document.getElementById("op").style.width = proc;
 				}
 			}
 			
-			function ciszej(){
+			function voldown(){
 				document.getElementById("player").volume -= 0.1;
-				if(vol-num>=0){
+				if(vol+num>=0){
 					vol-=num;
-					proc=vol.toString()+"%";
 					document.getElementById("vol").innerHTML = vol;
-					document.getElementById("op").style.width = proc;
 				}
 			}
     </script>
@@ -100,7 +91,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="">eSport-Stacja.pl</a>
+					<a class="navbar-brand" href="index.php">eSport-Stacja.pl</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
@@ -111,16 +102,16 @@
 									<span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#" onclick="play()"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
-									<li><a href="#" onclick="play_rock()"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
+									<li><a href="#" onclick="play('http://s1.thekrzos.eu:8700/;stream.mp3','Kanał Główny')"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
+									<li><a href="#" onclick="play('http://4stream.pl:18492/;stream.mp3','Kanał Rock')"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
 									<li class="divider"></li>
 									<li><a href="#" onclick="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</a></li>
 								</ul>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
-								<button class="btn navbar-btn btn-info" onclick="glosniej()"><span class="glyphicon glyphicon-plus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="volup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
 								<button class="btn navbar-btn btn-info disabled"><y id="vol">100</y>%</button>
-								<button class="btn navbar-btn btn-info" onclick="ciszej()"><span class="glyphicon glyphicon-minus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="voldown()"><span class="glyphicon glyphicon-minus-sign"></span></button>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
 								<a class="btn navbar-btn btn-warning" onclick="player()"><span class="glyphicon glyphicon-headphones"></span></a>
@@ -159,6 +150,9 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="esport.apk" role="button" class="btn" target="_blank"><i class="fa fa-android"></i> Aplikacja Android</a>
+						</li>
+						<li>
+							<a href="dev.php" role="button" class="btn"><i class="fa fa-connectdevelop"></i></a>
 						</li>
 						<li>
 							<a href="https://www.facebook.com/pages/ESport-Stacja/430678703750233" role="button" class="btn" target="_blank"><i class="fa fa-facebook"></i></a>
