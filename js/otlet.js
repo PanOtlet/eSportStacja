@@ -1,28 +1,35 @@
-function player(){
-	window.open("http://sluchaj.esport-stacja.pl", "okienko", "toolbar=no, menubar=no, location=no, personalbar=no, status=no, resizable=no, scrollbars=no, copyhistory=yes, width=400, height=585, top=0, left=0");
-}
+var player = document.getElementById("player");
+var vol = 100;
+var num = 10;
+var proc = "";
+var kanal = "Kanał Główny";
 
-function play(){
-	document.getElementById('rock').pause()
-	document.getElementById('glowny').play()
-}
-
-function play_rock(){
-	document.getElementById('glowny').pause()
-	document.getElementById('rock').play()
+function play(adress,kanal){
+	document.getElementById("player").pause();
+	document.getElementById("player").src=adress;
+	document.getElementById("player").play();
+	document.getElementById("kanal").innerHTML = kanal;
 }
 
 function pause(){
-	document.getElementById('glowny').pause()
-	document.getElementById('rock').pause()
+	document.getElementById("player").pause();
+	document.getElementById("player").src='';
+	kanal = "Radio wyłączone";
+	document.getElementById("kanal").innerHTML = kanal;
 }
 
-function glosniej(){
-	document.getElementById('glowny').volume += 0.1;
-	document.getElementById('rock').volume += 0.1;
+function volup(){
+	document.getElementById("player").volume += 0.1;
+	if(vol+num<=100){
+		vol+=num;
+		document.getElementById("vol").innerHTML = vol;
+	}
 }
 
-function ciszej(){
-	document.getElementById('glowny').volume -= 0.1;
-	document.getElementById('rock').volume -= 0.1;
+function voldown(){
+	document.getElementById("player").volume -= 0.1;
+	if(vol+num>=0){
+		vol-=num;
+		document.getElementById("vol").innerHTML = vol;
+	}
 }

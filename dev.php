@@ -30,48 +30,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
-	<script type="text/javascript">
-			var player = document.getElementById("player");
-			var vol = 100;
-			var num = 10;
-			var proc = "";
-			var kanal = "Kanał Główny";
-			
-            function newplayer(){
-				window.open("http://esport-stacja.pl/mini.html", "okienko", "toolbar=no, menubar=no, location=no, personalbar=no, status=no, resizable=no, scrollbars=no, copyhistory=yes, width=400, height=585, top=0, left=0");
-            }
-			
-			function play(adress,kanal){
-				document.getElementById("player").pause();
-				document.getElementById("player").src=adress;
-				document.getElementById("player").play();
-				document.getElementById("kanal").innerHTML = kanal;
-			}
-			
-			function pause(){
-				document.getElementById("player").pause();
-				document.getElementById("player").src='';
-				kanal = "Radio wyłączone";
-				document.getElementById("kanal").innerHTML = kanal;
-			}
-			
-			function volup(){
-				document.getElementById("player").volume += 0.1;
-				if(vol+num<=100){
-					vol+=num;
-					document.getElementById("vol").innerHTML = vol;
-				}
-			}
-			
-			function voldown(){
-				document.getElementById("player").volume -= 0.1;
-				if(vol+num>=0){
-					vol-=num;
-					document.getElementById("vol").innerHTML = vol;
-				}
-			}
-    </script>
+
+	<script src="./js/otlet.js"></script>
 	
 </head>
 
@@ -114,8 +74,8 @@
 								<button class="btn navbar-btn btn-info" onclick="voldown()"><span class="glyphicon glyphicon-minus-sign"></span></button>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
-								<a class="btn navbar-btn btn-warning" onclick="player()"><span class="glyphicon glyphicon-headphones"></span></a>
-								<a href="http://s1.thekrzos.eu:8700/listen.pls" class="btn navbar-btn btn-warning"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+								<a href="http://4stream.pl:18492/listen.pls" class="btn navbar-btn btn-warning"><span class="glyphicon glyphicon-floppy-disk"><i class="fa fa-globe"></i></span></a>
+								<a href="http://s1.thekrzos.eu:8700/listen.pls" class="btn navbar-btn btn-warning"><span class="glyphicon glyphicon-floppy-disk"><i class="fa fa-bolt"></i></span></a>
 							</div>
 							<div class="btn-group" role="group">
 							</div>
