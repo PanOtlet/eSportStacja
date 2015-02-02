@@ -28,6 +28,7 @@
     <![endif]-->
 	
 	<script type="text/javascript">
+			var odtwarzacz = document.getElementById("player");
 			var vol=100;
 			var num=10 ;
 			var proc="";
@@ -38,29 +39,30 @@
             }
 			
 			function play(){
-				document.getElementById('glowny').play();
-				document.getElementById('rock').stop();
+				document.getElementById("player").pause();
+				document.getElementById("player").src='http://s1.thekrzos.eu:8700/;stream.mp3';
+				document.getElementById("player").play();
 				kanal = "Kanał Główny";
 				document.getElementById("kanal").innerHTML = kanal;
 			}
 			
 			function play_rock(){
-				document.getElementById('glowny').stop();
-				document.getElementById('rock').play();
+				document.getElementById("player").pause();
+				document.getElementById("player").src='http://4stream.pl:18492/;stream.mp3';
+				document.getElementById("player").play();
 				kanal = "Kanał Rock";
 				document.getElementById("kanal").innerHTML = kanal;
 			}
 			
 			function pause(){
-				document.getElementById('glowny').stop();
-				document.getElementById('rock').stop();
+				document.getElementById("player").pause();
+				document.getElementById("player").src='';
 				kanal = "Radio wyłączone";
 				document.getElementById("kanal").innerHTML = kanal;
 			}
 			
 			function glosniej(){
-				document.getElementById('glowny').volume += 0.1;
-				document.getElementById('rock').volume += 0.1;
+				document.getElementById("player").volume += 0.1;
 				if(vol+num<=100){
 					vol+=num;
 					proc=vol.toString()+"%";
@@ -70,8 +72,7 @@
 			}
 			
 			function ciszej(){
-				document.getElementById('glowny').volume -= 0.1;
-				document.getElementById('rock').volume -= 0.1;
+				document.getElementById("player").volume -= 0.1;
 				if(vol-num>=0){
 					vol-=num;
 					proc=vol.toString()+"%";
@@ -85,11 +86,10 @@
 
 <body>
 
-	<audio id="glowny"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg" autoplay="" loop="" class="center-block" style="width: 100%">
+	<audio id="player"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg" autoplay="" loop="" class="center-block" style="width: 100%">
 		Twoja przeglądarka nie obsługuje HTML5.<br /><a href="http://www.browserchoice.eu/BrowserChoice/browserchoice_pl.htm">Wybierz najnowszą przeglądarkę</a>
 	</audio>
-	<audio id="rock"  src="http://4stream.pl:18492/;stream.mp3" type="audio/mpeg" loop="" class="center-block" style="width: 100%"></audio>
-	
+
 	<div class="container">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="align: center">
 			<div class="container">
