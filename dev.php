@@ -31,13 +31,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-	<script src="./js/otlet.js"></script>
+	<script src="./js/player.js"></script>
 	
 </head>
 
 <body>
-
-	<audio id="player"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg" autoplay="" loop="" class="center-block" style="width: 100%">
+	<canvas id="visualizer" ></canvas>
+	<audio id="audio"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg" autoplay="" loop="" class="center-block" style="width: 100%">
 		Twoja przeglądarka nie obsługuje HTML5.<br /><a href="http://www.browserchoice.eu/BrowserChoice/browserchoice_pl.htm">Wybierz najnowszą przeglądarkę</a>
 	</audio>
 
@@ -69,9 +69,9 @@
 								</ul>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
-								<button class="btn navbar-btn btn-info" onclick="volup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="volup()volup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
 								<button class="btn navbar-btn btn-info disabled"><y id="vol">100</y>%</button>
-								<button class="btn navbar-btn btn-info" onclick="voldown()"><span class="glyphicon glyphicon-minus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="voldown()voldown()"><span class="glyphicon glyphicon-minus-sign"></span></button>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
 								<a href="http://4stream.pl:18492/listen.pls" class="btn navbar-btn btn-warning"><span class="glyphicon glyphicon-floppy-disk"><i class="fa fa-globe"></i></span></a>
