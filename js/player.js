@@ -107,22 +107,25 @@ var proc = "";
 var kanal = "Kanał Główny";
 
 function play_(adress,kanal){
-    myAudio.pause();
-    myAudio.src=adress;
-    myAudio.play();
+    document.getElementById('audio').pause();
+    document.getElementById('audio').src=adress;
+    document.getElementById('audio').play();
     document.getElementById("kanal").innerHTML = kanal;
+    runing=true;
     loop();
 }
 
 function pause_(){
-    myAudio.pause();
-    myAudio.src='';
+    document.getElementById('audio').pause();
+    document.getElementById('audio').src='';
     kanal = "Radio wyłączone";
     document.getElementById("kanal").innerHTML = kanal;
+    runing=false;
+    loop();
 }
 
 function volup_(){
-    myAudio.volume += 0.1;
+    document.getElementById('audio').volume += 0.1;
     if(vol+num<=100){
         vol+=num;
         document.getElementById("vol").innerHTML = vol;
@@ -130,7 +133,7 @@ function volup_(){
 }
 
 function voldown_(){
-    myAudio.volume -= 0.1;
+    document.getElementById('audio').volume -= 0.1;
     if(vol+num>=0){
         vol-=num;
         document.getElementById("vol").innerHTML = vol;
