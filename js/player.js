@@ -44,17 +44,28 @@ var d_time=16;                                  //delay betwean iteration of mai
 var color_setp=20;//Math.floor(360/samples);    //steps color not in use now
 var bgcolor="#15151C";                          //color of background canvas
 
-function play_pause(){
+function play_pause(syrycy,nazwa){
     if(runing){
         runing=false;
         myAudio.pause();
         myAudio.src='';          //stop buforing content usable in stream
+        kanal = "Radio wyłączone";
+        document.getElementById("kanal").innerHTML = kanal;
     } else{
         runing=true;
+        audiosrc=syrycy;
         myAudio.src=audiosrc;    //start buforing content usable in stream
         myAudio.play();
+        document.getElementById("kanal").innerHTML = kanal;
     }
     loop();
+}
+
+function pause_(){
+    myAudio.pause();
+    myAudio.src='';
+    kanal = "Radio wyłączone";
+    document.getElementById("kanal").innerHTML = kanal;
 }
 
 function loop(){
@@ -113,16 +124,6 @@ function play_(adress,kanal){
     document.getElementById("kanal").innerHTML = kanal;
     runing=true;
     loop();
-}
-
-function pause_(){
-    document.getElementById('audio').pause();
-    document.getElementById('audio').src='';
-    kanal = "Radio wyłączone";
-    document.getElementById("kanal").innerHTML = kanal;
-    runing=false;
-    loop();
-}
 
 function volup_(){
     document.getElementById('audio').volume += 0.1;

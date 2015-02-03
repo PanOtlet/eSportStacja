@@ -30,8 +30,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 	<script src="./js/player.js"></script>
+
 	
 </head>
 
@@ -57,13 +57,13 @@
 					<ul class="nav navbar-nav">
 						<li>
 							<div class="btn-group">
-								<button type="button" class="btn btn-success disabled"><y id="kanal">Kanał Główny</y></button>
+								<button type="button" class="btn btn-success disabled"><y id="kanal">Radio wyłączone</y></button>
 								<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#" onclick="play_('http://s1.thekrzos.eu:8700/;stream.mp3','Kanał Główny')"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
-									<li><a href="#" onclick="play_('http://4stream.pl:18492/;stream.mp3','Kanał Rock')"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
+									<li><a href="#" onclick="play_pause('http://s1.thekrzos.eu:8700/;stream.mp3','Kanał Główny')"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
+									<li><a href="#" onclick="play_pause('http://4stream.pl:18492/;stream.mp3','Kanał Rock')"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
 									<li class="divider"></li>
 									<li><a href="#" onclick="pause_()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</a></li>
 								</ul>
