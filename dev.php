@@ -37,7 +37,7 @@
 
 <body>
 	<canvas id="visualizer" ></canvas>
-	<audio id="audio"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg" autoplay="" loop="" class="center-block" style="width: 100%">
+	<audio id="audio"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg" <!--autoplay="" loop=""-->>
 		Twoja przeglądarka nie obsługuje HTML5.<br /><a href="http://www.browserchoice.eu/BrowserChoice/browserchoice_pl.htm">Wybierz najnowszą przeglądarkę</a>
 	</audio>
 
@@ -62,16 +62,16 @@
 									<span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#" onclick="play('http://s1.thekrzos.eu:8700/;stream.mp3','Kanał Główny')"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
-									<li><a href="#" onclick="play('http://4stream.pl:18492/;stream.mp3','Kanał Rock')"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
+									<li><a href="#" onclick="play_('http://s1.thekrzos.eu:8700/;stream.mp3','Kanał Główny')"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
+									<li><a href="#" onclick="play_('http://4stream.pl:18492/;stream.mp3','Kanał Rock')"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
 									<li class="divider"></li>
-									<li><a href="#" onclick="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</a></li>
+									<li><a href="#" onclick="pause_()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</a></li>
 								</ul>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
-								<button class="btn navbar-btn btn-info" onclick="volup()volup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="volup_()"><span class="glyphicon glyphicon-plus-sign"></span></button>
 								<button class="btn navbar-btn btn-info disabled"><y id="vol">100</y>%</button>
-								<button class="btn navbar-btn btn-info" onclick="voldown()voldown()"><span class="glyphicon glyphicon-minus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="voldown_()"><span class="glyphicon glyphicon-minus-sign"></span></button>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
 								<a href="http://4stream.pl:18492/listen.pls" class="btn navbar-btn btn-warning"><span class="glyphicon glyphicon-floppy-disk"><i class="fa fa-globe"></i></span></a>
@@ -339,7 +339,7 @@
 	</div>
 	
 	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 </body>
 
 <footer class="footer">

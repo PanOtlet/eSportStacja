@@ -14,8 +14,8 @@ canvas.height = height;                         //set canvas height
 
 //audio magic don't touch :P
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-//var myAudio = document.querySelector('audio');            //no idea
-var myAudio = document.getElementById('audio');             //what is deffrence in these two lines funtioning
+var myAudio = document.querySelector('audio');            //no idea
+//var myAudio = document.getElementById('audio');             //what is deffrence in these two lines funtioning
 var pre = document.querySelector('pre');
 var myScript = document.querySelector('script');
 var source = audioCtx.createMediaElementSource(myAudio);    //audio and stream audio
@@ -106,21 +106,22 @@ var num = 10;
 var proc = "";
 var kanal = "Kanał Główny";
 
-function play(adress,kanal){
+function play_(adress,kanal){
     myAudio.pause();
     myAudio.src=adress;
     myAudio.play();
-    myAudio.innerHTML = kanal;
+    document.getElementById("kanal").innerHTML = kanal;
+    loop();
 }
 
-function pause(){
+function pause_(){
     myAudio.pause();
     myAudio.src='';
     kanal = "Radio wyłączone";
     document.getElementById("kanal").innerHTML = kanal;
 }
 
-function volup(){
+function volup_(){
     myAudio.volume += 0.1;
     if(vol+num<=100){
         vol+=num;
@@ -128,7 +129,7 @@ function volup(){
     }
 }
 
-function voldown(){
+function voldown_(){
     myAudio.volume -= 0.1;
     if(vol+num>=0){
         vol-=num;
