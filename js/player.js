@@ -61,7 +61,7 @@ function play_pause(syrycy,nazwa){
     loop();
 }
 
-function pause_(){
+function dupapause(){
     myAudio.pause();
     myAudio.src='';
     kanal = "Radio wyłączone";
