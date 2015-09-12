@@ -10,32 +10,36 @@
 <html class="full" lang="pl">
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Expires" content="0" />
 	<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
 	<meta http-equiv="Cache-Control" content="post-check=0, pre-check=0" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="description" content="Pierwsze w Polsce internetowe radio ukierunkowane w stronę esportu! Audycje i muzyka! Co potrzeba więcej!?">
-  <meta name="author" content="Otlet">
+    <meta name="description" content="Pierwsze w Polsce internetowe radio ukierunkowane w stronę esportu! Audycje i muzyka! Co potrzeba więcej!?">
+    <meta name="author" content="Otlet">
 
-  <title>eSport-Stacja.pl</title>
+    <title>eSport-Stacja.pl</title>
 
-  <link href="./css/bootstrap.css" rel="stylesheet">
-  <link href="./css/otlet.css" rel="stylesheet">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/otlet.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-  <!--[if lt IE 9]>
-  	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
+	<script src="./js/otlet.js"></script>
+	
 </head>
 
 <body>
-	<canvas id="visualizer" ></canvas>
-	<audio id="audio"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg"></audio>
+
+	<audio id="player"  src="http://s1.thekrzos.eu:8700/;stream.mp3" type="audio/mpeg" autoplay="" loop="" class="center-block" style="width: 100%">
+		Twoja przeglądarka nie obsługuje HTML5.<br /><a href="http://www.browserchoice.eu/BrowserChoice/browserchoice_pl.htm">Wybierz najnowszą przeglądarkę</a>
+	</audio>
 
 	<div class="container">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="align: center">
@@ -53,21 +57,21 @@
 					<ul class="nav navbar-nav">
 						<li>
 							<div class="btn-group">
-								<button type="button" class="btn btn-success disabled"><y id="kanal">Radio wyłączone</y></button>
+								<button type="button" class="btn btn-success disabled"><y id="kanal">Kanał Główny</y></button>
 								<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#" onclick="play_pause('http://s1.thekrzos.eu:8700/;stream.mp3','Kanał Główny')"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
-									<li><a href="#" onclick="play_pause('http://4stream.pl:18492/;stream.mp3','Kanał Rock')"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
+									<li><a href="#" onclick="play('http://s1.thekrzos.eu:8700/;stream.mp3','Kanał Główny')"><i class="fa fa-globe"></i> Kanał Główny <?php $radio->status("s1.thekrzos.eu",8700)?></a></li>
+									<li><a href="#" onclick="play('http://4stream.pl:18492/;stream.mp3','Kanał Rock')"><i class="fa fa-bolt"></i> Kanał Rock <?php $radio->status("4stream.pl",18492)?></a></li>
 									<li class="divider"></li>
-									<li><a href="#" onclick="dupapause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</a></li>
+									<li><a href="#" onclick="pause()"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</a></li>
 								</ul>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
-								<button class="btn navbar-btn btn-info" onclick="volup_()"><span class="glyphicon glyphicon-plus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="volup()"><span class="glyphicon glyphicon-plus-sign"></span></button>
 								<button class="btn navbar-btn btn-info disabled"><y id="vol">100</y>%</button>
-								<button class="btn navbar-btn btn-info" onclick="voldown_()"><span class="glyphicon glyphicon-minus-sign"></span></button>
+								<button class="btn navbar-btn btn-info" onclick="voldown()"><span class="glyphicon glyphicon-minus-sign"></span></button>
 							</div>
 							<div class="btn-group" role="group" aria-label="sterowanie">
 								<a href="http://4stream.pl:18492/listen.pls" class="btn navbar-btn btn-warning"><span class="glyphicon glyphicon-floppy-disk"><i class="fa fa-globe"></i></span></a>
@@ -120,7 +124,7 @@
 				</div>
 			</div>
 		</nav>
-
+		
 		<div class="main">
 			<div class="panel panel-danger panel-twitter">
 				<div class="panel-heading">Najnowsze informacje</div>
@@ -140,7 +144,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="o-nas" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -158,7 +162,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="otlet" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -177,7 +181,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="prezenterzy" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -246,7 +250,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="kontakt" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -269,7 +273,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="zaiks" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -289,7 +293,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="partnerzy" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -313,7 +317,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="pozdrowienia" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -333,10 +337,9 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/player.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 
 <footer class="footer">
